@@ -114,8 +114,7 @@ USE_I18N = True
 
 USE_TZ = True
 DEBUG = False
-ALLOWED_HOSTS = ['Fake_News_Detector_by_AnuruddhBajpai.onrender.com']
-
+ALLOWED_HOSTS = ['fake-news-predictor-3.onrender.com']
 
 
 # Static files (CSS, JavaScript, Images)
