@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake News Detector</title>
+    <link rel="stylesheet" href="/static/detector/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Fake News Detector</h2>
+        <form action="/predict/" method="post" class="mb-4">
+            {% csrf_token %}
+            <div class="mb-3">
+                <textarea name="news" class="form-control" rows="6" placeholder="Enter news text here..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Check News</button>
+        </form>
+
+        {% if result %}
+        <div class="text-center">
+            <h3 class="mt-4">Prediction: <span class="badge bg-{% if result == 'Real' %}success{% else %}danger{% endif %}">{{ result }}</span></h3>
+            <img src="data:image/png;base64,{{ graph }}" class="img-fluid mt-3" alt="Probability Chart">
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
